@@ -9,6 +9,7 @@ void mostra_fracao(t_fracao, char *);
 void inversa1(t_fracao *);
 t_fracao inversa2(t_fracao);
 void multiplica_fracao(t_fracao *, t_fracao *, t_fracao *);
+void divide_fracao(t_fracao *, t_fracao *, t_fracao *);
 
 int main()
 {
@@ -19,6 +20,8 @@ int main()
     mostra_fracao(f2, "Fracao 2: ");
     multiplica_fracao(&f1, &f2, &f3);
     mostra_fracao(f3, "Multiplicacao: ");
+    divide_fracao(&f1, &f2, &f3);
+    mostra_fracao(f3, "Divisao: ");
     return 0;
 }
 
@@ -56,6 +59,13 @@ t_fracao inversa2(t_fracao f)
 void multiplica_fracao(t_fracao *f, t_fracao *g, t_fracao *r)
 {
     
-    r->num = f->num * g->num;
-    r->den = f->den * g->den;
+    r->num = f->num * g->den;
+    r->den = f->den * g->num;
+}
+
+void divide_fracao(t_fracao *f, t_fracao *g, t_fracao *r)
+{
+    
+    r->num = f->num / g->den;
+    r->den = f->den / g->num;
 }
