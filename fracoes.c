@@ -15,7 +15,9 @@ int main()
     le_fracao(&f1, "Fracao 1: ");
     mostra_fracao(f1, "Fracao 1: ");
     inversa1(&f1);
-    mostra_fracao(f1, "Fracao invertida: ");
+    mostra_fracao(f1, "Fracao invertida por referencia: ");
+    f1 = inversa2(f1);
+    mostra_fracao(f1, "Fracao invertida com return: ");
     return 0;
 }
 
@@ -36,7 +38,16 @@ void mostra_fracao(t_fracao f, char * msg)
 
 void inversa1(t_fracao *f)
 {
-    int aux = f->num;
+    int aux;
+    aux = f->num;
     f->num = f->den;
     f->den = aux;
+}
+
+t_fracao inversa2(t_fracao f)
+{
+    t_fracao aux;
+    aux.num = f.den;
+    aux.den = f.num;
+    return aux;
 }
