@@ -6,16 +6,20 @@ typedef struct fracao {
 
 void le_fracao(t_fracao *, char *);
 void mostra_fracao(t_fracao, char *);
+void inversa1(t_fracao *);
+t_fracao inversa2(t_fracao);
 
 int main()
 {
     t_fracao f1;
     le_fracao(&f1, "Fracao 1: ");
     mostra_fracao(f1, "Fracao 1: ");
+    inversa1(&f1);
+    mostra_fracao(f1, "Fracao invertida: ");
     return 0;
 }
 
-le_fracao(t_fracao *f, char * msg)
+void le_fracao(t_fracao *f, char * msg)
 {
     printf("%s", msg);
     printf("Digite o numerador: ");
@@ -24,8 +28,15 @@ le_fracao(t_fracao *f, char * msg)
     scanf("%d", &f->den);
 }
 
-mostra_fracao(t_fracao f, char * msg)
+void mostra_fracao(t_fracao f, char * msg)
 {
     printf("%s", msg);
     printf("%d/%d", f.num, f.den);
+}
+
+void inversa1(t_fracao *f)
+{
+    int aux = f->num;
+    f->num = f->den;
+    f->den = aux;
 }
