@@ -8,16 +8,17 @@ void le_fracao(t_fracao *, char *);
 void mostra_fracao(t_fracao, char *);
 void inversa1(t_fracao *);
 t_fracao inversa2(t_fracao);
+void multiplica_fracao(t_fracao *, t_fracao *, t_fracao *);
 
 int main()
 {
-    t_fracao f1;
+    t_fracao f1, f2, f3, f4;
     le_fracao(&f1, "Fracao 1: ");
     mostra_fracao(f1, "Fracao 1: ");
-    inversa1(&f1);
-    mostra_fracao(f1, "Fracao invertida por referencia: ");
-    f1 = inversa2(f1);
-    mostra_fracao(f1, "Fracao invertida com return: ");
+    le_fracao(&f2, "Fracao 2: ");
+    mostra_fracao(f2, "Fracao 2: ");
+    multiplica_fracao(&f1, &f2, &f3);
+    mostra_fracao(f3, "Multiplicacao: ");
     return 0;
 }
 
@@ -50,4 +51,11 @@ t_fracao inversa2(t_fracao f)
     aux.num = f.den;
     aux.den = f.num;
     return aux;
+}
+
+void multiplica_fracao(t_fracao *f, t_fracao *g, t_fracao *r)
+{
+    
+    r->num = f->num * g->num;
+    r->den = f->den * g->den;
 }
